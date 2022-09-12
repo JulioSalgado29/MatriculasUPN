@@ -4,7 +4,8 @@
     ViewBag.Title = "Matricula";
 }
 
-<h2>Matricula - @Model.GetNames()</h2>
+        <h2>Matricula - @Model.GetNames()</h2>
+        @Html.ActionLink("Volver", "ListaEstudiantes", "Estudiante")
 
 @using (Html.BeginForm())
 {
@@ -20,7 +21,7 @@
         }
 
         <div style="margin-top: 70px">
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" value="Continuar" class="btn btn-default" />
         </div>
 
     </div>

@@ -33,9 +33,9 @@ namespace MatriculasUPN.CapaLogica
         {
             return DatPeriodo.Instancia.VerificarPeriodo(id);
         }
-        public List<Curso> ListarCurso(int idCarrera)
+        public List<Curso> ListarCurso(int idCarrera, int idPeriodo)
         {
-            List<Curso> lista = DatCurso.Instancia.ListarCurso(idCarrera);
+            List<Curso> lista = DatCurso.Instancia.ListarCurso(idCarrera, idPeriodo);
             return lista;
         }
         public Curso BuscarCurso(int id)

@@ -10,8 +10,8 @@
 }
 
 <h3>Seleccione los Cursos de @estudiante.GetNames() - Periodo (@periodo.name)</h3>
-
-Carrera - @estudiante.carrera.name
+<h5>Carrera - @estudiante.carrera.name</h5>
+@Html.ActionLink("Volver", "Index", "Matricula", new { idEstudiante = estudiante.id }, null)
 
 <table class="table table-bordered table-responsive">
     <tr>
@@ -34,7 +34,7 @@ Carrera - @estudiante.carrera.name
                 @Html.DisplayFor(modelItem => item.credit)
             </td>
             <td>
-                @Html.ActionLink("Seleccionar", "Clases", "Matricula", new { idEstudiante = estudiante.id, idPeriodo= periodo.id, idCurso = item.id }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Seleccionar", "Clases", "Matricula", new { idEstudiante = estudiante.id, idPeriodo = periodo.id, idCurso = item.id }, new { @class = "btn btn-warning" })
             </td>
         </tr>
     }

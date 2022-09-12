@@ -21,7 +21,7 @@ namespace MatriculasUPN.CapaAccesoDatos
         }
         #endregion singleton
         #region methods
-        public List<Curso> ListarCurso(int idCarrera)
+        public List<Curso> ListarCurso(int idCarrera, int idPeriodo)
         {
             List<Curso> lista = new List<Curso>();
             try
@@ -32,6 +32,7 @@ namespace MatriculasUPN.CapaAccesoDatos
                     CommandType = CommandType.StoredProcedure
                 };
                 cmd.Parameters.AddWithValue("@pmIdCarrera", idCarrera);
+                cmd.Parameters.AddWithValue("@pmIdPeriodo", idPeriodo);
                 cn.Open();
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())

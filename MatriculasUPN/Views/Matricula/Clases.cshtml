@@ -10,7 +10,8 @@
     Curso curso = @ViewData["curso"] as Curso;
 }
 
-<h2>Clases</h2>
+<h2>Clases de @curso.name</h2>
+@Html.ActionLink("Volver", "Cursos", "Matricula", new { idEstudiante = estudiante.id, idPeriodo = periodo.id }, null)
 
 <table class="table">
     <tr>

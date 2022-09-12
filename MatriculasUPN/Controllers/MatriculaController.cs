@@ -55,7 +55,7 @@ namespace MatriculasUPN.Controllers
             {
                 Estudiante estudiante = LogEstudiante.Instancia.BuscarEstudiante(idEstudiante);
                 Periodo periodo = LogMatricula.Instancia.BuscarPeriodo(idPeriodo);
-                List<Curso> listaCurso = LogMatricula.Instancia.ListarCurso(estudiante.carrera.id);
+                List<Curso> listaCurso = LogMatricula.Instancia.ListarCurso(estudiante.carrera.id, idPeriodo);
                 ViewData["estudiante"] = estudiante;
                 ViewData["periodo"] = periodo;
 
