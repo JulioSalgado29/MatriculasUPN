@@ -1,0 +1,44 @@
+﻿@using MatriculasUPN.CapaEntidad;
+
+@model IEnumerable<MatriculasUPN.CapaEntidad.Curso>
+@{
+    ViewBag.Title = "Cursos";
+}
+@{
+    Estudiante estudiante = @ViewData["estudiante"] as Estudiante;
+    Periodo periodo = @ViewData["periodo"] as Periodo;
+}
+
+<h3>Seleccione los Cursos de @estudiante.GetNames() - Periodo (@periodo.name)</h3>
+
+Carrera - @estudiante.carrera.name
+
+<table class="table table-bordered table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.credit)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.credit)
+            </td>
+            <td>
+                @Html.ActionLink("Seleccionar", "Clases", "Matricula", new { idEstudiante = estudiante.id, idPeriodo= periodo.id, idCurso = item.id }, new { @class = "btn btn-warning" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+

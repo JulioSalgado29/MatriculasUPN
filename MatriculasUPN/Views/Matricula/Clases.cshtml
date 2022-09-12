@@ -1,0 +1,80 @@
+﻿@using MatriculasUPN.CapaEntidad;
+@model IEnumerable<MatriculasUPN.CapaEntidad.Clase>
+
+@{
+    ViewBag.Title = "Clases";
+}
+@{
+    Estudiante estudiante = @ViewData["estudiante"] as Estudiante;
+    Periodo periodo = @ViewData["periodo"] as Periodo;
+    Curso curso = @ViewData["curso"] as Curso;
+}
+
+<h2>Clases</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ourBegin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ourFinal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.teacher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.location)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ourBegin.Hour):@Html.DisplayFor(modelItem => item.ourBegin.Minute)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ourFinal.Hour):@Html.DisplayFor(modelItem => item.ourFinal.Minute)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.teacher)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.location)
+            </td>
+            @if ((item.state) == false)
+            {
+                <td>
+                    @Html.ActionLink("Inscribir", "InscribirClase", "Matricula", new { idEstudiante = estudiante.id, idPeriodo = periodo.id, idCurso = curso.id, idClase = item.id }, new { @class = "btn btn-warning" })
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.ActionLink("Eliminar", "EliminarClase", "Matricula", new { idEstudiante = estudiante.id, idPeriodo = periodo.id, idCurso = curso.id, idClase = item.id }, new { @class = "btn btn-danger" })
+                </td>
+            }
+        </tr>
+    }
+
+</table>
+@if (TempData["MessageError"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["MessageError"]
+    </div>
+}
+@if (TempData["MessageSuccess"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["MessageSuccess"]
+    </div>
+}
